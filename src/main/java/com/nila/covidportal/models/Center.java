@@ -104,6 +104,22 @@ public class Center {
         }
         return result;
     }
+    public Integer getMaxAvailabilityFromSessions()
+    {
+        int result=0;
+        for (Session curObj : this.sessions)
+        {
+            if (curObj.getAvailableCapacity()>0)
+            {
+                System.out.println(this.getName()+" : "+curObj.getMinAgeLimit()+"+ : "+curObj.getVaccine()+" : "+curObj.getAvailableCapacity());
+            }
+            if (curObj.getAvailableCapacity()>result)
+            {
+                result=curObj.getAvailableCapacity();
+            }
+        }
+        return result;
+    }
     public Integer getMaxDose1AvailabilityFromSessions()
     {
         return this.getMaxDose1AvailabilityFromSessions(18);

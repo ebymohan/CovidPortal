@@ -53,10 +53,11 @@ public class DashboardController {
         List<Center> results= new ArrayList<Center>();
         results=ds.filterBasedOnVaccine(parsedOjects,"covaxin");
         results=ds.filterBasedOnAge(results,18);
-        
+        results=ds.filterBasedOnMaxAvailability(results);
         if (results.size()>0)
             retValue="true";
-
+        // System.out.println(results);
+        
         return retValue;
         // return results.size()+"";
     }

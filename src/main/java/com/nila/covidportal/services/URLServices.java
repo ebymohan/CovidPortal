@@ -14,7 +14,8 @@ public class URLServices {
         StringBuilder content = new StringBuilder();  
         // Use try and catch to avoid the exceptions  
         try  
-        {  System.out.println(theUrl);
+        {  
+            // System.out.println(theUrl);
         
             URL url = new URL(theUrl); // creating a url object  
             java.net.URLConnection urlConnection = url.openConnection(); // creating a urlconnection object  
@@ -45,7 +46,7 @@ public class URLServices {
         String url="https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+district_id+"&date="+date;
         result=this.getUrlContents(url);
         result=result.substring(11);
-        System.out.println(result);
+        // System.out.println(result);
         
         return result;
     }
