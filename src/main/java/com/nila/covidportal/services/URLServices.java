@@ -45,8 +45,20 @@ public class URLServices {
         String date = dateFormat.format(now);
         String url="https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+district_id+"&date="+date;
         result=this.getUrlContents(url);
-        result=result.substring(11);
-        // System.out.println(result);
+        
+        result=result.trim();
+        result=result.substring(11,result.length()-1);
+        System.out.println(result);
+        result=result.trim();
+        
+        return result;
+    }
+    public String getData(String url)
+    {
+        String result="";
+        result=this.getUrlContents(url);
+        // result=result.substring(10,result.length()-10);
+        System.out.println(result);
         
         return result;
     }

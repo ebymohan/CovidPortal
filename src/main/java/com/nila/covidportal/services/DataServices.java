@@ -7,10 +7,12 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nila.covidportal.models.District;
 import com.nila.covidportal.models.Center;
+import com.nila.covidportal.models.State;
 
 public class DataServices {
-    public List<Center> parseRawURLData(String json)
+    public List<Center> parseJsonToCenterList(String json)
     {
         List<Center> centers=new ArrayList<Center>();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -24,6 +26,37 @@ public class DataServices {
             e.printStackTrace();
         }
         return centers;
+    }
+
+    public List<State> parseJsonToStateList(String json)
+    {
+        List<State> states=new ArrayList<State>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            states=Arrays.asList(objectMapper.readValue(json, State[].class));
+        } catch (JsonMappingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return states;
+    }
+    
+    public List<District> parseJsonToDistrictList(String json) {
+        List<District> districts=new ArrayList<District>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            districts=Arrays.asList(objectMapper.readValue(json, District[].class));
+        } catch (JsonMappingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return districts;
     }
 
     public List<Center> filterBasedOnVaccine(List<Center> centers, String vaccineFilter) {
@@ -87,4 +120,5 @@ public class DataServices {
         }
         return results;
     }
+
 }

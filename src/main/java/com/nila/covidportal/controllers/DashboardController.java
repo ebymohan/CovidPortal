@@ -21,7 +21,7 @@ public class DashboardController {
         URLServices fetchURL=new URLServices();
         DataServices ds = new DataServices();
         String apiRawData = fetchURL.ekmdata();
-        List<Center> results=ds.parseRawURLData(apiRawData);
+        List<Center> results=ds.parseJsonToCenterList(apiRawData);
         if(!vaccineFilter.equals(""))
         {
             results=ds.filterBasedOnVaccine(results,vaccineFilter);
@@ -47,9 +47,7 @@ public class DashboardController {
         URLServices fetchURL=new URLServices();
         DataServices ds = new DataServices();
         String apiRawData = fetchURL.ekmdata();
-        List<Center> parsedOjects=ds.parseRawURLData(apiRawData);
-        List<Center> temp1= new ArrayList<Center>();
-        List<Center> temp2= new ArrayList<Center>();
+        List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
         List<Center> results= new ArrayList<Center>();
         results=ds.filterBasedOnVaccine(parsedOjects,"covaxin");
         results=ds.filterBasedOnAge(results,18);
