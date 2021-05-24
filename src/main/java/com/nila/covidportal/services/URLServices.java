@@ -8,6 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class URLServices {
     private String getUrlContents(String theUrl)  
     {  
@@ -36,7 +39,7 @@ public class URLServices {
         }  
         return content.toString();  
     }
-    public String ekmdata()
+public String getData()
     {
         String result="";
         String district_id="307";
@@ -47,11 +50,44 @@ public class URLServices {
         result=this.getUrlContents(url);
         
         result=result.trim();
+        
         result=result.substring(11,result.length()-1);
         System.out.println(result);
         result=result.trim();
         
         return result;
+    }
+    
+    public String getDistrictData(int dis_id)
+    {
+        String result="";
+        String district_id="";
+        try{
+        district_id=dis_id+"";
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        Date now = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
+        String date = dateFormat.format(now);
+        if (district_id.isEmpty())
+            district_id="307";
+        String url="https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id="+district_id+"&date="+date;
+        result=this.getUrlContents(url);
+        
+        result=result.trim();
+        
+        result=result.substring(11,result.length()-1);
+        System.out.println(result);
+        result=result.trim();
+        
+        return result;
+    }
+    public String getEKMData()
+    {
+        return this.getDistrictData(307);
     }
     public String getData(String url)
     {

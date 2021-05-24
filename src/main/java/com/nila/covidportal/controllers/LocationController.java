@@ -25,7 +25,7 @@ public class LocationController {
         String apiRawData=fetchURL.getData(rawURL);
 
         //Separate the array and other TTL schemas
-        //To-Do a better way of doing this
+        //TODO a better way of doing this
         apiRawData=apiRawData.substring(10,apiRawData.length()-10);
 
 
@@ -55,7 +55,7 @@ public class LocationController {
         
         String apiRawData=fetchURL.getData(rawURL);
         //Separate the array and other TTL schemas
-        //To-Do a better way of doing this
+        //TODO a better way of doing this
         apiRawData=apiRawData.substring(13,apiRawData.length()-10);
 
         List<District> districts=ds.parseJsonToDistrictList(apiRawData);

@@ -11,6 +11,9 @@ import com.nila.covidportal.models.District;
 import com.nila.covidportal.models.Center;
 import com.nila.covidportal.models.State;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class DataServices {
     public List<Center> parseJsonToCenterList(String json)
     {

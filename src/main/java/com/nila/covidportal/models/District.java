@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+// import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -37,7 +37,8 @@ public class District {
             ", districtName='" + getDistrictName() + "'" +
             "}";
     }
-    
+
+
 
 
     @Override
