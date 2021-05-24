@@ -9,17 +9,24 @@ import com.nila.covidportal.models.Center;
 import com.nila.covidportal.services.DataServices;
 import com.nila.covidportal.services.URLServices;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DashboardController {
+
+    @Autowired
+    URLServices fetchURL;
+    @Autowired
+    DataServices ds;
+
     @GetMapping("/api/v1/dashboard")
     public String dashboard(@RequestParam(required = false,defaultValue = "") String ageFilter,@RequestParam(required = false,defaultValue = "") String vaccineFilter, @RequestParam(required = false,defaultValue = "") String doseFilter)
     {
-        URLServices fetchURL=new URLServices();
-        DataServices ds = new DataServices();
+        // URLServices fetchURL=new URLServices();
+        // DataServices ds = new DataServices();
         String apiRawData = fetchURL.getEKMData();
         List<Center> results=ds.parseJsonToCenterList(apiRawData);
         if(!vaccineFilter.equals(""))
@@ -44,8 +51,8 @@ public class DashboardController {
     public String custom()
     {
         String retValue="false";
-        URLServices fetchURL=new URLServices();
-        DataServices ds = new DataServices();
+        // URLServices fetchURL=new URLServices();
+        // DataServices ds = new DataServices();
         String apiRawData = fetchURL.getEKMData();
         List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
         List<Center> results= new ArrayList<Center>();
