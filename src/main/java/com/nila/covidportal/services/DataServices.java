@@ -87,11 +87,11 @@ public class DataServices {
         
         return results;
     }
-    public List<Center> filterBasedOnDose1Availability(List<Center> centers, int ageFilter) {
+    public List<Center> filterBasedOnDose1Availability(List<Center> centers) {
         List<Center> results=new ArrayList<Center>();
         for (Center curObj : centers)
         {
-            if (curObj.getMaxDose1AvailabilityFromSessions(ageFilter)>0)
+            if (curObj.getMaxDose1AvailabilityFromSessions()>0)
             {
                 results.add(curObj);
             }
@@ -100,11 +100,11 @@ public class DataServices {
         return results;
     }
 
-    public List<Center> filterBasedOnDose2Availability(List<Center> centers, int ageFilter) {
+    public List<Center> filterBasedOnDose2Availability(List<Center> centers) {
         List<Center> results=new ArrayList<Center>();
         for (Center curObj : centers)
         {
-            if (curObj.getMaxDose2AvailabilityFromSessions(ageFilter)>0)
+            if (curObj.getMaxDose2AvailabilityFromSessions()>0)
             {
                 results.add(curObj);
             }

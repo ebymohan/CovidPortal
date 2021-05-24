@@ -120,32 +120,32 @@ public class Center {
         }
         return result;
     }
+    // public Integer getMaxDose1AvailabilityFromSessions()
+    // {
+    //     return this.getMaxDose1AvailabilityFromSessions(18);
+    // }
     public Integer getMaxDose1AvailabilityFromSessions()
-    {
-        return this.getMaxDose1AvailabilityFromSessions(18);
-    }
-    public Integer getMaxDose1AvailabilityFromSessions(int ageFilter) //18 is default parameter
     {
         int result=0;
         for (Session curObj : this.sessions)
         {
-            if (curObj.getMinAgeLimit()==ageFilter && curObj.getAvailableCapacityDose1()>result)
+            if (curObj.getAvailableCapacityDose1()>result)
             {
                 result=curObj.getAvailableCapacityDose1();
             }
         }
         return result;
     }
+    // public Integer getMaxDose2AvailabilityFromSessions()
+    // {
+    //     return this.getMaxDose2AvailabilityFromSessions(18);
+    // }
     public Integer getMaxDose2AvailabilityFromSessions()
-    {
-        return this.getMaxDose2AvailabilityFromSessions(18);
-    }
-    public Integer getMaxDose2AvailabilityFromSessions(int ageFilter) //18 is default parameter
     {
         int result=0;
         for (Session curObj : this.sessions)
         {
-            if (curObj.getMinAgeLimit()==ageFilter && curObj.getAvailableCapacityDose2()>result)
+            if (curObj.getAvailableCapacityDose2()>result)
             {
                 result=curObj.getAvailableCapacityDose2();
             }

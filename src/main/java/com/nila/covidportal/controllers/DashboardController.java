@@ -39,11 +39,11 @@ public class DashboardController {
         }
         if(doseFilter.equals("1"))
         {
-            results=ds.filterBasedOnDose1Availability(results, Integer.parseInt(ageFilter));
+            results=ds.filterBasedOnDose1Availability(results);
         }
         else if(doseFilter.equals("2"))
         {
-            results=ds.filterBasedOnDose2Availability(results, Integer.parseInt(ageFilter));
+            results=ds.filterBasedOnDose2Availability(results);
         }
         return results.toString();
     }
@@ -60,8 +60,8 @@ public class DashboardController {
         List<Center> resultDose2= new ArrayList<Center>();
         results=ds.filterBasedOnVaccine(parsedOjects,"covaxin");
         results=ds.filterBasedOnAge(results,18);
-        resultDose1=ds.filterBasedOnDose1Availability(results, 18);
-        resultDose2=ds.filterBasedOnDose2Availability(results, 18);
+        resultDose1=ds.filterBasedOnDose1Availability(results);
+        resultDose2=ds.filterBasedOnDose2Availability(results);
         results=ds.filterBasedOnMaxAvailability(results);
         if (results.size()>0 | resultDose1.size()>0 | resultDose2.size()>0)
             retValue="true";
