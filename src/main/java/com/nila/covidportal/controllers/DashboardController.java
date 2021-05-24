@@ -56,10 +56,14 @@ public class DashboardController {
         String apiRawData = fetchURL.getEKMData();
         List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
         List<Center> results= new ArrayList<Center>();
+        List<Center> resultDose1= new ArrayList<Center>();
+        List<Center> resultDose2= new ArrayList<Center>();
         results=ds.filterBasedOnVaccine(parsedOjects,"covaxin");
         results=ds.filterBasedOnAge(results,18);
+        resultDose1=ds.filterBasedOnDose1Availability(results, 18);
+        resultDose2=ds.filterBasedOnDose2Availability(results, 18);
         results=ds.filterBasedOnMaxAvailability(results);
-        if (results.size()>0)
+        if (results.size()>0 | resultDose1.size()>0 | resultDose2.size()>0)
             retValue="true";
         // System.out.println(results);
         
