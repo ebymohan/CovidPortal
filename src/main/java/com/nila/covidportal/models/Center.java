@@ -79,6 +79,35 @@ public class Center {
         this.vaccineFees = vaccineFees;
     }
 
+    public void filterSessionBasedOnAge(int ageFilter)
+    {
+        List<Session> newSessions = new ArrayList<Session>();
+        for (Session curObj : this.sessions)
+        {
+            if (curObj.getMinAgeLimit()==ageFilter)
+            {
+                newSessions.add(curObj);
+            }
+        }
+        this.sessions=newSessions;
+        // return this;
+    }
+
+    public void filterSessionBasedOnVaccine(String vaccineFilter)
+    {
+        List<Session> newSessions = new ArrayList<Session>();
+        for (Session curObj : this.sessions)
+        {
+            if (curObj.getVaccine().equalsIgnoreCase(vaccineFilter))
+            {
+                newSessions.add(curObj);
+            }
+        }
+        this.sessions=newSessions;
+        // return this;
+    }
+
+
     public List<String> getVaccinesFromSessions()
     {
         List<String> result = new ArrayList<String>();
@@ -192,20 +221,20 @@ public class Center {
     @Override
     public String toString() {
         return "{" +
-            " centerId='" + getCenterId() + "'" +
-            ", name='" + getName() + "'" +
-            ", address='" + getAddress() + "'" +
-            ", stateName='" + getStateName() + "'" +
-            ", districtName='" + getDistrictName() + "'" +
-            ", blockName='" + getBlockName() + "'" +
-            ", pincode='" + getPincode() + "'" +
-            ", lat='" + getLat() + "'" +
-            ", _long='" + get_long() + "'" +
-            ", from='" + getFrom() + "'" +
-            ", to='" + getTo() + "'" +
-            ", feeType='" + getFeeType() + "'" +
-            ", sessions='" + getSessions() + "'" +
-            ", vaccineFees='" + getVaccineFees() + "'" +
+            "\"centerId\":\"" + getCenterId() + "\"" +
+            ", \"name\":\"" + getName() + "\"" +
+            ", \"address\":\"" + getAddress() + "\"" +
+            // ", \"stateName\":\"" + getStateName() + "\"" +
+            // ", \"districtName\":\"" + getDistrictName() + "\"" +
+            // ", \"blockName\":\"" + getBlockName() + "\"" +
+            // ", \"pincode\":\"" + getPincode() + "\"" +
+            // ", \"lat\":\"" + getLat() + "\"" +
+            // ", \"long\":\"" + get_long() + "\"" +
+            // ", \"from\":\"" + getFrom() + "\"" +
+            // ", \"to\":\"" + getTo() + "\"" +
+            ", \"feeType\":\"" + getFeeType() + "\"" +
+            ", \"sessions\":" + getSessions() + "" +
+            ", \"vaccineFees\":" + getVaccineFees() + "" +
             "}";
     }
     public Integer getCenterId() {
@@ -319,6 +348,8 @@ public class Center {
     public void setVaccineFees(List<VaccineFee> vaccineFees) {
         this.vaccineFees = vaccineFees;
     }
+    
+    }
 
 
 
@@ -331,4 +362,4 @@ public class Center {
 
 
 
-}
+

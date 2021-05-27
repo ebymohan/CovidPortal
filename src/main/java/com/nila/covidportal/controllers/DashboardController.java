@@ -23,7 +23,7 @@ public class DashboardController {
     DataServices ds;
 
     @GetMapping("/api/v1/dashboard")
-    public String dashboard(@RequestParam(required = false,defaultValue = "") String ageFilter,@RequestParam(required = false,defaultValue = "") String vaccineFilter, @RequestParam(required = false,defaultValue = "") String doseFilter)
+    public String v1Dashboard(@RequestParam(required = false,defaultValue = "") String ageFilter,@RequestParam(required = false,defaultValue = "") String vaccineFilter, @RequestParam(required = false,defaultValue = "") String doseFilter)
     {
         
         String apiRawData = fetchURL.getEKMData();
@@ -47,7 +47,7 @@ public class DashboardController {
         return results.toString();
     }
     @GetMapping("/api/v2/dashboard")
-    public String custom()
+    public String v2Dashboard()
     {
         String retValue="false";
         String apiRawData = fetchURL.getEKMData();
@@ -63,4 +63,25 @@ public class DashboardController {
         return retValue;
         // return results.size()+"";
     }
+
+    @GetMapping("/api/v3/dashboard")
+    public String v3Dashboard()
+    {
+        String retValue="false";
+        String apiRawData = fetchURL.getEKMData();
+        List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
+        List<Center> results= new ArrayList<Center>();
+        results.addAll(parsedOjects);
+        results=ds.newfilterBasedOnVaccine(results,"covaxin");
+        results=ds.newfilterBasedOnAge(results,18);
+        // results=ds.filterBasedOnMaxAvailability(results,18);
+        if (results.size()>0)
+            retValue="true";
+        // System.out.println(results);
+        
+        // return retValue;
+        return results.toString();
+    }
+
+
 }

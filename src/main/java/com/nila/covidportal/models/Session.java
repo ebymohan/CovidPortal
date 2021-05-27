@@ -54,14 +54,14 @@ public Integer availableCapacityDose2;
     @Override
     public String toString() {
         return "{" +
-            " sessionId='" + getSessionId() + "'" +
-            ", date='" + getDate() + "'" +
-            ", availableCapacity='" + getAvailableCapacity() + "'" +
-            ", minAgeLimit='" + getMinAgeLimit() + "'" +
-            ", vaccine='" + getVaccine() + "'" +
-            ", slots='" + getSlots() + "'" +
-            ", availableCapacityDose1='" + getAvailableCapacityDose1() + "'" +
-            ", availableCapacityDose2='" + getAvailableCapacityDose2() + "'" +
+            // "\"sessionId\":\"" + getSessionId() + "\"" +
+            ", \"date\":\"" + getDate() + "\"" +
+            ", \"availableCapacity\":\"" + getAvailableCapacity() + "\"" +
+            ", \"minAgeLimit\":\"" + getMinAgeLimit() + "\"" +
+            ", \"vaccine\":\"" + getVaccine() + "\"" +
+            // ", \"slots\":" + getSlots() + "" +
+            ", \"availableCapacityDose1\":\"" + getAvailableCapacityDose1() + "\"" +
+            ", \"availableCapacityDose2\":\"" + getAvailableCapacityDose2() + "\"" +
             "}";
     }
 

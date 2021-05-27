@@ -30,8 +30,8 @@ public String fee;
     @Override
     public String toString() {
         return "{" +
-            " vaccine='" + getVaccine() + "'" +
-            ", fee='" + getFee() + "'" +
+            "\"vaccine\":\"" + getVaccine() + "\"" +
+            ", \"fee\":\"" + getFee() + "\"" +
             "}";
     }
 

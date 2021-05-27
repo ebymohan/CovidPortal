@@ -119,4 +119,32 @@ public class DataServices {
         return results;
     }
 
+    public List<Center> newfilterBasedOnVaccine(List<Center> centers, String vaccineFilter) {
+        
+        List<Center> results=new ArrayList<Center>();
+        for (Center curObj : centers)
+        {
+            if (curObj.getVaccinesFromSessions().contains(vaccineFilter.toLowerCase()))
+            {
+                curObj.filterSessionBasedOnVaccine(vaccineFilter);
+                results.add(curObj);
+            }
+        }
+        return results;
+    }
+    public List<Center> newfilterBasedOnAge(List<Center> centers, int ageFilter) {
+        List<Center> results=new ArrayList<Center>();
+        for (Center curObj : centers)
+        {
+            if (curObj.getMinAgeLimitsFromSessions().contains(ageFilter))
+            {
+                curObj.filterSessionBasedOnAge(ageFilter);
+                results.add(curObj);
+            }
+        }
+        
+        return results;
+    }
+    
+
 }
