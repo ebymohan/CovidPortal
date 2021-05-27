@@ -145,6 +145,19 @@ public class DataServices {
         
         return results;
     }
+
+    public List<Center> newfilterBasedOnAvailability(List<Center> centers) {
+        List<Center> results=new ArrayList<Center>();
+        for (Center curObj : centers)
+        {
+            if (curObj.getMaxAvailabilityFromSessions()>0 || curObj.getMaxDose1AvailabilityFromSessions()>0 || curObj.getMaxDose2AvailabilityFromSessions()>0)
+            {
+                results.add(curObj);
+            }
+        }
+        
+        return results;
+    }
     
 
 }

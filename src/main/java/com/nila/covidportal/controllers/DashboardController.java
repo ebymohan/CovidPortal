@@ -72,15 +72,16 @@ public class DashboardController {
         List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
         List<Center> results= new ArrayList<Center>();
         results.addAll(parsedOjects);
-        results=ds.newfilterBasedOnVaccine(results,"covaxin");
+        // results=ds.newfilterBasedOnVaccine(results,"covaxin");
         results=ds.newfilterBasedOnAge(results,18);
         // results=ds.filterBasedOnMaxAvailability(results,18);
+        // results=ds.newfilterBasedOnAvailability(results);
         if (results.size()>0)
             retValue="true";
         // System.out.println(results);
         
-        // return retValue;
-        return results.toString();
+        return retValue;
+        // return results.toString();
     }
 
 
