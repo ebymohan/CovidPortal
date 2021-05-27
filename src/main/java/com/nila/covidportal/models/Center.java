@@ -92,7 +92,7 @@ public class Center {
         // return result.toArray(String[]::new);
         return result;
     }
-    public List<Integer> getMinAgesFromSessions()
+    public List<Integer> getMinAgeLimitsFromSessions()
     {
         List<Integer> result = new ArrayList<Integer>();
         for (Session curObj : this.sessions)
@@ -106,6 +106,10 @@ public class Center {
     }
     public Integer getMaxAvailabilityFromSessions()
     {
+        return this.getMaxAvailabilityFromSessions(18);
+    }
+    public Integer getMaxAvailabilityFromSessions(int ageFilter) //18 is default parameter
+    {
         int result=0;
         for (Session curObj : this.sessions)
         {
@@ -113,39 +117,39 @@ public class Center {
             {
                 System.out.println(this.getName()+" : "+curObj.getMinAgeLimit()+"+ : "+curObj.getVaccine()+" : "+curObj.getAvailableCapacity());
             }
-            if (curObj.getAvailableCapacity()>result)
+            if (curObj.getMinAgeLimit()==ageFilter && curObj.getAvailableCapacity()>result)
             {
                 result=curObj.getAvailableCapacity();
             }
         }
         return result;
     }
-    // public Integer getMaxDose1AvailabilityFromSessions()
-    // {
-    //     return this.getMaxDose1AvailabilityFromSessions(18);
-    // }
     public Integer getMaxDose1AvailabilityFromSessions()
+    {
+        return this.getMaxDose1AvailabilityFromSessions(18);
+    }
+    public Integer getMaxDose1AvailabilityFromSessions(int ageFilter) //18 is default parameter
     {
         int result=0;
         for (Session curObj : this.sessions)
         {
-            if (curObj.getAvailableCapacityDose1()>result)
+            if (curObj.getMinAgeLimit()==ageFilter && curObj.getAvailableCapacityDose1()>result)
             {
                 result=curObj.getAvailableCapacityDose1();
             }
         }
         return result;
     }
-    // public Integer getMaxDose2AvailabilityFromSessions()
-    // {
-    //     return this.getMaxDose2AvailabilityFromSessions(18);
-    // }
     public Integer getMaxDose2AvailabilityFromSessions()
+    {
+        return this.getMaxDose2AvailabilityFromSessions(18);
+    }
+    public Integer getMaxDose2AvailabilityFromSessions(int ageFilter) //18 is default parameter
     {
         int result=0;
         for (Session curObj : this.sessions)
         {
-            if (curObj.getAvailableCapacityDose2()>result)
+            if (curObj.getMinAgeLimit()==ageFilter && curObj.getAvailableCapacityDose2()>result)
             {
                 result=curObj.getAvailableCapacityDose2();
             }

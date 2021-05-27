@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DashboardController {
-
+    
     @Autowired
     URLServices fetchURL;
     @Autowired
@@ -25,8 +25,7 @@ public class DashboardController {
     @GetMapping("/api/v1/dashboard")
     public String dashboard(@RequestParam(required = false,defaultValue = "") String ageFilter,@RequestParam(required = false,defaultValue = "") String vaccineFilter, @RequestParam(required = false,defaultValue = "") String doseFilter)
     {
-        // URLServices fetchURL=new URLServices();
-        // DataServices ds = new DataServices();
+        
         String apiRawData = fetchURL.getEKMData();
         List<Center> results=ds.parseJsonToCenterList(apiRawData);
         if(!vaccineFilter.equals(""))
@@ -39,11 +38,11 @@ public class DashboardController {
         }
         if(doseFilter.equals("1"))
         {
-            results=ds.filterBasedOnDose1Availability(results);
+            results=ds.filterBasedOnDose1Availability(results, Integer.parseInt(ageFilter));
         }
         else if(doseFilter.equals("2"))
         {
-            results=ds.filterBasedOnDose2Availability(results);
+            results=ds.filterBasedOnDose2Availability(results, Integer.parseInt(ageFilter));
         }
         return results.toString();
     }
@@ -51,19 +50,13 @@ public class DashboardController {
     public String custom()
     {
         String retValue="false";
-        // URLServices fetchURL=new URLServices();
-        // DataServices ds = new DataServices();
         String apiRawData = fetchURL.getEKMData();
         List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
         List<Center> results= new ArrayList<Center>();
-        List<Center> resultDose1= new ArrayList<Center>();
-        List<Center> resultDose2= new ArrayList<Center>();
         results=ds.filterBasedOnVaccine(parsedOjects,"covaxin");
         results=ds.filterBasedOnAge(results,18);
-        resultDose1=ds.filterBasedOnDose1Availability(results);
-        resultDose2=ds.filterBasedOnDose2Availability(results);
-        results=ds.filterBasedOnMaxAvailability(results);
-        if (results.size()>0 | resultDose1.size()>0 | resultDose2.size()>0)
+        results=ds.filterBasedOnMaxAvailability(results,18);
+        if (results.size()>0)
             retValue="true";
         // System.out.println(results);
         

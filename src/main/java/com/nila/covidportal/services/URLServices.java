@@ -62,13 +62,9 @@ public String getData()
     {
         String result="";
         String district_id="";
-        try{
+        
         district_id=dis_id+"";
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+        
         Date now = Calendar.getInstance().getTime();  
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
         String date = dateFormat.format(now);
@@ -80,7 +76,7 @@ public String getData()
         result=result.trim();
         
         result=result.substring(11,result.length()-1);
-        System.out.println(result);
+        // System.out.println(result);
         result=result.trim();
         
         return result;

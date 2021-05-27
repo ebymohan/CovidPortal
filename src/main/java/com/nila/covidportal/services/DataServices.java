@@ -22,10 +22,8 @@ public class DataServices {
         try {
             centers=Arrays.asList(objectMapper.readValue(json, Center[].class));
         } catch (JsonMappingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return centers;
@@ -38,25 +36,22 @@ public class DataServices {
         try {
             states=Arrays.asList(objectMapper.readValue(json, State[].class));
         } catch (JsonMappingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return states;
     }
     
-    public List<District> parseJsonToDistrictList(String json) {
+    public List<District> parseJsonToDistrictList(String json) 
+    {
         List<District> districts=new ArrayList<District>();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             districts=Arrays.asList(objectMapper.readValue(json, District[].class));
         } catch (JsonMappingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return districts;
@@ -79,7 +74,7 @@ public class DataServices {
         List<Center> results=new ArrayList<Center>();
         for (Center curObj : centers)
         {
-            if (curObj.getMinAgesFromSessions().contains(ageFilter))
+            if (curObj.getMinAgeLimitsFromSessions().contains(ageFilter))
             {
                 results.add(curObj);
             }
@@ -87,11 +82,11 @@ public class DataServices {
         
         return results;
     }
-    public List<Center> filterBasedOnDose1Availability(List<Center> centers) {
+    public List<Center> filterBasedOnDose1Availability(List<Center> centers, int ageFilter) {
         List<Center> results=new ArrayList<Center>();
         for (Center curObj : centers)
         {
-            if (curObj.getMaxDose1AvailabilityFromSessions()>0)
+            if (curObj.getMaxDose1AvailabilityFromSessions(ageFilter)>0)
             {
                 results.add(curObj);
             }
@@ -100,11 +95,11 @@ public class DataServices {
         return results;
     }
 
-    public List<Center> filterBasedOnDose2Availability(List<Center> centers) {
+    public List<Center> filterBasedOnDose2Availability(List<Center> centers, int ageFilter) {
         List<Center> results=new ArrayList<Center>();
         for (Center curObj : centers)
         {
-            if (curObj.getMaxDose2AvailabilityFromSessions()>0)
+            if (curObj.getMaxDose2AvailabilityFromSessions(ageFilter)>0)
             {
                 results.add(curObj);
             }
@@ -112,11 +107,11 @@ public class DataServices {
         
         return results;
     }
-    public List<Center> filterBasedOnMaxAvailability(List<Center> centers) {
+    public List<Center> filterBasedOnMaxAvailability(List<Center> centers, int ageFilter) {
         List<Center> results=new ArrayList<Center>();
         for (Center curObj : centers)
         {
-            if (curObj.getMaxAvailabilityFromSessions() > 0)
+            if (curObj.getMaxAvailabilityFromSessions(ageFilter) > 0)
             {
                 results.add(curObj);
             }

@@ -54,9 +54,7 @@ public class LocationController {
     @GetMapping("/api/v2/refreshdistricts")
     public String refreshDistricts(@RequestParam Integer stateid)
     {
-        // URLServices fetchURL=new URLServices();
-        // DataServices ds = new DataServices();
-        // String result = "Failure";
+        
         String rawURL="https://cdn-api.co-vin.in/api/v2/admin/location/districts/"+stateid;
         
         String apiRawData=fetchURL.getData(rawURL);
