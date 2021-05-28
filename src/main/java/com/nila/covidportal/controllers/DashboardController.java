@@ -74,7 +74,7 @@ public class DashboardController {
         results.addAll(parsedOjects);
         // results=ds.newfilterBasedOnVaccine(results,"covaxin");
         results=ds.newfilterBasedOnAge(results,18);
-        // results=ds.newfilterBasedOnAvailability(results);
+        results=ds.newfilterBasedOnAvailability(results);
         if (results.size()>0)
             retValue="true";
         // System.out.println(results);
