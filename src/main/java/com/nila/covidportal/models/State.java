@@ -2,6 +2,11 @@ package com.nila.covidportal.models;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -11,6 +16,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "state_id",
 "state_name"
 })
+@Entity
+@Table(name = "STATE")
 public class State {
     @JsonProperty("state_id")
     private Integer stateId;
@@ -50,7 +57,8 @@ public class State {
     public int hashCode() {
         return Objects.hash(stateId, stateName);
     }
-
+    @Id
+    @Column(name ="STATE_ID")
     public Integer getStateId() {
         return this.stateId;
     }
@@ -58,7 +66,7 @@ public class State {
     public void setStateId(Integer stateId) {
         this.stateId = stateId;
     }
-
+    @Column(name ="STATE_NAME")
     public String getStateName() {
         return this.stateName;
     }

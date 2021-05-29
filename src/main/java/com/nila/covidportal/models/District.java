@@ -2,6 +2,9 @@ package com.nila.covidportal.models;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -13,6 +16,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "district_id",
 "district_name"
 })
+@Entity
+@Table(name="DISTRICT")
 public class District {
     @JsonProperty("district_id")
     private Integer districtId;
