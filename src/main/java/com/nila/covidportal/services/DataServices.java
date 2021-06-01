@@ -10,11 +10,32 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nila.covidportal.models.District;
 import com.nila.covidportal.models.Center;
 import com.nila.covidportal.models.State;
+import com.nila.covidportal.repository.DistrictRepository;
+import com.nila.covidportal.repository.StateRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DataServices {
+public class DataServices { 
+
+
+
+
+    public final StateRepository stateRepository;
+    public final DistrictRepository districtRepository;
+    
+    @Autowired
+    public DataServices(StateRepository stateRepository,DistrictRepository districtRepository) {
+        this.stateRepository = stateRepository;
+        this.districtRepository = districtRepository;
+    }
+    
+    // @Autowired
+    // public DataServices(DistrictRepository districtRepository) {
+    //     this.districtRepository = districtRepository;
+    // }
+
     public List<Center> parseJsonToCenterList(String json)
     {
         List<Center> centers=new ArrayList<Center>();
@@ -40,7 +61,9 @@ public class DataServices {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+        stateRepository.saveAll(states);
         return states;
+        // return stateRepository.findAll();
     }
     
     public List<District> parseJsonToDistrictList(String json) 
@@ -54,6 +77,7 @@ public class DataServices {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+        districtRepository.saveAll(districts);
         return districts;
     }
 
