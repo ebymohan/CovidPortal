@@ -46,24 +46,7 @@ public class DashboardController {
         }
         return results.toString();
     }
-    @GetMapping("/api/v2/dashboard")
-    public String v2Dashboard()
-    {
-        String retValue="false";
-        String apiRawData = fetchURL.getEKMData();
-        List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
-        List<Center> results= new ArrayList<Center>();
-        results=ds.filterBasedOnVaccine(parsedOjects,"covaxin");
-        results=ds.filterBasedOnAge(results,18);
-        results=ds.filterBasedOnMaxAvailability(results,18);
-        if (results.size()>0)
-            retValue="true";
-        // System.out.println(results);
-        
-        return retValue;
-        // return results.size()+"";
-    }
-
+    
     @GetMapping("/api/v3/dashboard")
     public String v3Dashboard()
     {
@@ -74,7 +57,7 @@ public class DashboardController {
         results.addAll(parsedOjects);
         // results=ds.newfilterBasedOnVaccine(results,"covaxin");
         results=ds.newfilterBasedOnAge(results,18);
-        results=ds.newfilterBasedOnAvailability(results);
+        results=ds.newfilterBasedOnAnyAvailability(results);
         if (results.size()>0)
             retValue="true";
         // System.out.println(results);
@@ -83,5 +66,42 @@ public class DashboardController {
         // return results.toString();
     }
 
+    @GetMapping("/api/v4/dashboard")
+    public String v4Dashboard()
+    {
+        String retValue="false";
+        String apiRawData = fetchURL.getEKMData();
+        List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
+        List<Center> results= new ArrayList<Center>();
+        results.addAll(parsedOjects);
+        // results=ds.newfilterBasedOnVaccine(results,"covaxin");
+        results=ds.newfilterBasedOnAge(results,18);
+        results=ds.newfilterBasedOnDose1Availability(results);
+        if (results.size()>0)
+            retValue="true";
+        // System.out.println(results);
+        
+        return retValue;
+        // return results.toString();
+    }
+
+    @GetMapping("/api/v4/debug")
+    public String v3Debug()
+    {
+        String retValue="false";
+        String apiRawData = fetchURL.getEKMData();
+        List<Center> parsedOjects=ds.parseJsonToCenterList(apiRawData);
+        List<Center> results= new ArrayList<Center>();
+        results.addAll(parsedOjects);
+        // results=ds.newfilterBasedOnVaccine(results,"covaxin");
+        results=ds.newfilterBasedOnAge(results,18);
+        results=ds.newfilterBasedOnDose1Availability(results);
+        if (results.size()>0)
+            retValue="true";
+        // System.out.println(results);
+        
+        // return retValue;
+        return results.toString();
+    }
 
 }

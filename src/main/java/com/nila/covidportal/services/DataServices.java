@@ -22,8 +22,8 @@ public class DataServices {
 
 
 
-    public final StateRepository stateRepository;
-    public final DistrictRepository districtRepository;
+    private final StateRepository stateRepository;
+    private final DistrictRepository districtRepository;
     
     @Autowired
     public DataServices(StateRepository stateRepository,DistrictRepository districtRepository) {
@@ -31,10 +31,7 @@ public class DataServices {
         this.districtRepository = districtRepository;
     }
     
-    // @Autowired
-    // public DataServices(DistrictRepository districtRepository) {
-    //     this.districtRepository = districtRepository;
-    // }
+
 
     public List<Center> parseJsonToCenterList(String json)
     {
@@ -170,7 +167,7 @@ public class DataServices {
         return results;
     }
 
-    public List<Center> newfilterBasedOnAvailability(List<Center> centers) {
+    public List<Center> newfilterBasedOnAnyAvailability(List<Center> centers) {
         List<Center> results=new ArrayList<Center>();
         for (Center curObj : centers)
         {
@@ -182,6 +179,29 @@ public class DataServices {
         
         return results;
     }
-    
+    public List<Center> newfilterBasedOnDose1Availability(List<Center> centers) {
+        List<Center> results=new ArrayList<Center>();
+        for (Center curObj : centers)
+        {
+            if (curObj.getMaxDose1AvailabilityFromSessions()>0)
+            {
+                results.add(curObj);
+            }
+        }
+        
+        return results;
+    }
+    public List<Center> newfilterBasedOnDose2Availability(List<Center> centers) {
+        List<Center> results=new ArrayList<Center>();
+        for (Center curObj : centers)
+        {
+            if (curObj.getMaxDose2AvailabilityFromSessions()>0)
+            {
+                results.add(curObj);
+            }
+        }
+        
+        return results;
+    }
 
 }
