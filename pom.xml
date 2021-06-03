@@ -7,7 +7,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
-		<packaging>jar</packaging><!-- added to try fix mainclass not found -->
+		
 	</parent>
 	<groupId>com.nila</groupId>
 	<artifactId>covidportal</artifactId>
