@@ -50,7 +50,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- added to try fix mainclass not found starts here -->
+				<!-- added to try fix mainclass not found starts here>
 				<executions>
         			<execution>
             			<goals>
@@ -62,7 +62,7 @@
             			</configuration>
         			</execution>
     			</executions>
-				<!-- added to try fix mainclass not found ends here-->
+				added to try fix mainclass not found ends here-->
 			</plugin>
 		</plugins>
 	</build>
